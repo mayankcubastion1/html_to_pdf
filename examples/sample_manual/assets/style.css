@@ -1,0 +1,6 @@
+.container {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+  padding: 1rem;
+  border-radius: 8px;
+}
