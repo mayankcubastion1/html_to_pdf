@@ -1,0 +1,19 @@
+input_dir: examples/sample_manual
+output_dir: build
+menu_file: menu.html
+contents_glob: Contents/**/*.html
+page_size: A4
+margin_top: 10mm
+margin_bottom: 10mm
+margin_left: 10mm
+margin_right: 10mm
+zoom: 1.0
+overflow_fix_enable: true
+overflow_fix_selectors:
+  - .container
+images_inline: true
+css_inline: true
+js_inline: true
+playwright_fallback: true
+chunk_size: 25
+fallback_strategy: prefix

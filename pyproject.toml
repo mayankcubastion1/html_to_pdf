@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "html2manual"
+version = "0.1.0"
+description = "Flatten HTML manuals and render sectioned PDFs"
+authors = [{name = "html2manual maintainers"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.0",
+  "typer>=0.9",
+  "structlog>=23.1",
+  "charset-normalizer>=3.0",
+  "beautifulsoup4>=4.12",
+  "pypdf>=3.9",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "mypy>=1.6",
+  "ruff>=0.1.8",
+  "black>=23.12",
+  "nox>=2023.4.22",
+  "types-PyYAML",
+]
+playwright = [
+  "playwright>=1.39",
+]
+
+[project.scripts]
+html2manual = "html2manual.cli:app"
+
+[project.entry-points."html2manual.menu_parsers"]
+default = "html2manual.menu_parser.mftbc_menu:MFTBCMenuParser"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["html2manual"]
+ignore_missing_imports = true
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "html2manual",
+  "examples",
+  "tests",
+  "README.md",
+  "Makefile",
+  "noxfile.py",
+  "Dockerfile",
+  "html2manual.spec",
+]
